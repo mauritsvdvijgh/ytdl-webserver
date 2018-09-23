@@ -42,6 +42,7 @@ RUN apk add --update --no-cache \
     ln /usr/bin/python3.6 /usr/bin/python               && \
     mkdir -p public/temp
 
+# install the latest npm and only the production/non-dev dependencies
 COPY package.json package-lock.json ./
 RUN npm install -g npm@latest && npm ci --only=production && npm cache clean --force
 
